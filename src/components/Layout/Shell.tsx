@@ -1,6 +1,9 @@
 "use client";
 import { useDisclosure } from "@mantine/hooks";
-import { AppShell, Burger, Group, Skeleton, Text } from "@mantine/core";
+import { AppShell, Burger, Group, Select, Stack, Text } from "@mantine/core";
+import navigationList from "~/config/navigation";
+import NavigationItem from "../UI/NavigationItem";
+import OrganizationSwitcher from "../UI/OrganizationSwitcher";
 
 export default function Shell({ children }: { children: React.ReactNode }) {
   const [opened, { toggle }] = useDisclosure();
@@ -20,12 +23,12 @@ export default function Shell({ children }: { children: React.ReactNode }) {
         </Group>
       </AppShell.Header>
       <AppShell.Navbar p="md">
-        Navbar
-        {Array(15)
-          .fill(0)
-          .map((_, index) => (
-            <Skeleton key={index} h={28} mt="sm" animate={false} />
+        <Stack>
+          <OrganizationSwitcher />
+          {navigationList.map((item) => (
+            <NavigationItem key={item.label} {...item} />
           ))}
+        </Stack>
       </AppShell.Navbar>
       <AppShell.Main>{children}</AppShell.Main>
     </AppShell>
