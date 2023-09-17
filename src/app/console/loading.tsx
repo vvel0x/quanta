@@ -1,12 +1,11 @@
-import { Skeleton, Stack } from "@mantine/core";
-import React from "react";
-
+import { Title, Text } from "@mantine/core";
 export default function loading() {
   return (
-    <Stack>
-      <Skeleton height={20} width={"32rem"} />
-      <Skeleton height={20} width={"26rem"} />
-      <Skeleton height={20} width={"26rem"} />
-    </Stack>
+    <div className="grid h-screen place-items-center">
+      <div className="text-center">
+        <Title>Quanta</Title>
+        <Text>Loading UI</Text>
+      </div>
+    </div>
   );
 }

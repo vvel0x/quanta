@@ -9,27 +9,27 @@ type NavigationLink = {
 
 export default [
   {
-    href: "/console/",
+    href: "/",
     label: "Dashboard",
     Icon: IconGauge,
   },
   {
-    href: "/console/links",
+    href: "/links",
     label: "Links",
     Icon: IconLink,
   },
   {
-    href: "/console/domains",
+    href: "/domains",
     label: "Domains",
     Icon: IconLink,
   },
   {
-    href: "/console/users",
+    href: "/users",
     label: "Users",
     Icon: IconLink,
   },
   {
-    href: "/console/settings",
+    href: "/settings",
     label: "Settings",
     Icon: IconLink,
   },
