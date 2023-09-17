@@ -1,3 +1,7 @@
+import { currentUser } from "@clerk/nextjs";
+import { SimpleGrid, Title } from "@mantine/core";
+import QuickAdd from "~/components/Cards/QuickAdd";
+
 interface PageProps {
   params: {
     slug: string;
@@ -11,10 +15,17 @@ export const metadata = {
 
 export default async function Console({ params }: PageProps) {
   const { slug } = params;
+  const user = await currentUser();
 
   return (
     <>
-      <div>Console</div>
+      <div>
+        <Title>Dashboard</Title>
+      </div>
+
+      <SimpleGrid cols={2} spacing="md" mt={6}>
+        <QuickAdd />
+      </SimpleGrid>
     </>
   );
 }
