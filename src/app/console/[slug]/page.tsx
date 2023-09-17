@@ -23,7 +23,14 @@ export default async function Console({ params }: PageProps) {
         <Title>Dashboard</Title>
       </div>
 
-      <SimpleGrid cols={2} spacing="md" mt={6}>
+      <SimpleGrid
+        cols={{
+          base: 1,
+          md: 2,
+        }}
+        spacing="md"
+        mt={6}
+      >
         <QuickAdd />
       </SimpleGrid>
     </>
