@@ -2,6 +2,10 @@
   "name": "quanta",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@8.6.12",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
