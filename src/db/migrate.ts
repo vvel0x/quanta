@@ -13,9 +13,8 @@ async function main() {
   await migrate(db, { migrationsFolder: "./src/db/drizzle" });
 }
 
-main()
+void main()
   .then(() => console.info("Done!"))
-  .catch((err) => console.error(err))
   .finally(() => {
     process.exit(0);
   });
