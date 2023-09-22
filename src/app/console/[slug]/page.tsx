@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { currentUser } from "@clerk/nextjs";
 import { SimpleGrid, Title } from "@mantine/core";
 import QuickAdd from "~/components/Cards/QuickAdd";
