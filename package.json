@@ -12,7 +12,7 @@
     "start": "next start",
     "lint": "next lint",
     "db:generate": "drizzle-kit generate:pg",
-    "db:migrate": "node -r esbuild-register src/db/migrate.ts"
+    "db:migrate": "tsx src/db/migrate.ts"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.27.1",
