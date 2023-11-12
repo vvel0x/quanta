@@ -1,8 +1,8 @@
-import { currentUser } from "@clerk/nextjs";
+import { isPersonal } from "~/utils/isPersonalOrg";
 import { link, organization } from "~/db/schema";
+import { auth } from "@clerk/nextjs";
 import { eq } from "drizzle-orm";
 import { db } from "~/db";
-import { isPersonal } from "~/utils/isPersonalOrg";
 
 interface PageProps {
   params: {
@@ -15,10 +15,10 @@ export const metadata = {
 };
 
 async function getLinks(orgSlug: string) {
-  const user = await currentUser();
+  const { userId } = auth();
 
   if (isPersonal(orgSlug))
-    return await db.select().from(link).where(eq(link.authorId, user!.id));
+    return await db.select().from(link).where(eq(link.authorId, userId!));
 
   return await db
     .select()
