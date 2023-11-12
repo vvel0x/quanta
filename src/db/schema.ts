@@ -15,22 +15,9 @@ export const organization = pgTable("organization", {
   createdAt: date("created_at").notNull().defaultNow(),
 });
 
-export const userToOrganization = pgTable(
-  "user_to_organization",
-  {
-    userId: varchar("user_id").notNull(),
-    orgId: uuid("org_id").references(() => organization.id),
-  },
-  (table) => ({
-    pk: primaryKey(table.orgId, table.userId),
-  })
-);
-
 export const domain = pgTable("domain", {
   id: uuid("id").primaryKey().defaultRandom(),
-  name: text("name"),
   domain: text("domain").notNull().unique(),
-  orgId: uuid("org_id").references(() => organization.id),
   createdAt: date("created_at").notNull().defaultNow(),
 });
 
@@ -42,5 +29,28 @@ export const link = pgTable("link", {
   domainId: uuid("domain_id").references(() => domain.id),
   organizationId: uuid("organization_id").references(() => organization.id),
   createdAt: date("created_at").notNull().defaultNow(),
-  updatedAt: date("updated_at").notNull().defaultNow(),
+  updatedAt: date("updated_at").defaultNow(),
 });
+
+export const userToOrganization = pgTable(
+  "user_to_organization",
+  {
+    userId: varchar("user_id").notNull(),
+    orgId: uuid("org_id").references(() => organization.id),
+  },
+  (table) => ({
+    pk: primaryKey(table.orgId, table.userId),
+  })
+);
+
+export const domainToOwner = pgTable(
+  "domain_to_owner",
+  {
+    domainId: uuid("domain_id").references(() => domain.id),
+    organizationId: uuid("organization_id").references(() => organization.id),
+    userId: varchar("owner_id"),
+  },
+  (table) => ({
+    pk: primaryKey(table.domainId),
+  })
+);
